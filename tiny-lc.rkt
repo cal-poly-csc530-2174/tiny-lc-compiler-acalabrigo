@@ -1,6 +1,5 @@
 #lang typed/racket
 (require typed/rackunit)
-(require racket/format)
 
 ; Adam Calabrigo
 ; CPE 530 Assignment 1
