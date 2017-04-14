@@ -16,7 +16,7 @@
        [(list '+ l r) (list (translate l) '+ (translate r))]
        [(list '* l r) (list (translate l) '* (translate r))]
        [(list 'ifleq0 c l r) (list (translate c) '<= 0 '? (translate l) ': (translate r))]
-       [(list 'println s) (list 'function\(\)\{ 'console.log\( (translate s) '\) '\; 'return 0 '\})]
+       [(list 'println s) (list 'console.log\( (translate s) '\))]
        [(list 'λ (? list? x) expr) (list 'function\( (translate (first x)) '\)\{ 'return (translate expr) '\})]
        [(list fun arg)
         (define t_arg (translate arg))
