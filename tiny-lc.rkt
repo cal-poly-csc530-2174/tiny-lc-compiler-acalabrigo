@@ -1,5 +1,6 @@
 #lang typed/racket
 (require typed/rackunit)
+(require racket/format)
 
 ; Adam Calabrigo
 ; CPE 530 Assignment 1
@@ -25,10 +26,11 @@
           [_ (list (translate fun) t_arg)])])]
     [else (error 'LC "invalid input")]))
 
+; read from specified file, output to output.js
 (define input (file->value (cast (command-line #:args (filename) filename) Path-String)))
-(define output (translate (cast input Sexp)))
-(write-to-file output "./output.js" #:mode 'text #:exists 'truncate/replace)
-
+(define output (~a (translate (cast input Sexp))))
+(display-to-file output "./output.js" #:mode 'text #:exists 'truncate/replace)
+ 
 ; translate test cases
 #|(check-equal? (translate '{+ 1 2}) '(1 + 2))
 (check-equal? (translate '{+ x 2}) '(x + 2))
